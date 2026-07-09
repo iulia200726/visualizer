@@ -340,6 +340,7 @@ button {
         height: auto; /* Lăsăm conținutul să dicteze înălțimea */
         padding-top: 15px; /* Împiedică tăierea butoanelor în partea de sus */
         padding-bottom: calc(50px + env(safe-area-inset-bottom)); /* Spațiu jos + zona sigură iPhone */
+        margin-bottom: calc(50px + env(safe-area-inset-bottom)); /* Evită tăierea pe iPhone */
 
     }
 }
