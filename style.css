@@ -4,18 +4,25 @@
     padding: 0;
 }
 
+/* FIX MAGIC PENTRU SAFARI iOS */
+html {
+    height: -webkit-fill-available;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #121212;
     color: #e0e0e0;
+    /* Folosim 100vh ca bază, dar pe iOS va folosi -webkit-fill-available */
     height: 100vh;
+    height: -webkit-fill-available; 
     overflow: hidden;
 }
 
 .app-wrapper {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 100%; /* Ia 100% din body */
 }
 
 .main-content {
@@ -305,27 +312,44 @@ button {
    ========================================= */
 @media (max-width: 800px) {
     .main-content {
-        flex-direction: column; /* Pune sidebar-ul sub teren */
+        flex-direction: column; 
     }
     
     .field-container {
         border-right: none;
         border-bottom: 2px solid #222;
         padding: 10px;
-        flex: none; /* Oprește flex-ul să forțeze dimensiunea */
-        height: 50vh; /* Terenul ia fix jumătate din ecran pe telefon */
+        /* Ocupă fix 45% din înălțimea ecranului */
+        flex: 0 0 45%; 
+        height: auto; 
     }
     
     #fieldCanvas {
-        max-height: 100%; /* Permite canvasului să umple zona limitată */
+        max-height: 100%; 
     }
     
     .sidebar {
-        width: 100%; /* Sidebar-ul ia toată lățimea pe mobil */
-        height: 50vh; 
+        width: 100%; 
+        /* Ocupă restul spațiului automat */
+        flex: 1; 
+        height: auto;
+        /* FOARTE IMPORTANT: Fără asta flexbox blochează scroll-ul pe Safari */
+        min-height: 0; 
+    }
+    
+    .sidebar-content {
+        /* Permite scroll doar în interiorul listei de puncte */
+        -webkit-overflow-scrolling: touch;
     }
     
     .input-row {
-        flex-wrap: wrap; /* Input-urile se duc pe rândul următor dacă nu încap */
+        flex-wrap: wrap; 
+    }
+
+    .timeline-bar {
+        /* Adaugă spațiul necesar pentru bara de Home din iPhone, dacă există */
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+        height: auto;
+        min-height: 70px;
     }
 }
