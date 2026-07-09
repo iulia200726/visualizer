@@ -335,12 +335,13 @@ button {
         flex-wrap: wrap; 
     }
 
-    /* FIX DEFINITIV pentru bara de timeline tăiată */
+    /* FIX pentru bara de timeline tăiată pe iPhone */
     .timeline-bar {
-        height: auto; /* Lăsăm conținutul să dicteze înălțimea */
-        padding-top: 15px; /* Împiedică tăierea butoanelor în partea de sus */
-        padding-bottom: calc(50px + env(safe-area-inset-bottom)); /* Spațiu jos + zona sigură iPhone */
-        margin-bottom: calc(50px + env(safe-area-inset-bottom)); /* Evită tăierea pe iPhone */
-
+        height: auto; 
+        min-height: 90px; /* Ne asigurăm că are destulă înălțime de bază */
+        padding-top: 20px; /* Spațiu sus ca să nu taie iconițele */
+        
+        /* Adăugăm 60px spațiu gol jos + zona sigură iPhone, împingând butoanele sus */
+        padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
     }
 }
