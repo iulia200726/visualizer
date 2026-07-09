@@ -304,7 +304,6 @@ button {
    RESPONSIVITATE PENTRU ECRANE MICI (MOBILE)
    ========================================= */
 @media (max-width: 800px) {
-    /* Forțăm înălțimea dinamică (dvh) doar pentru telefoane, ca să se adapteze la bara Safari */
     body, .app-wrapper {
         height: 100dvh; 
     }
@@ -317,8 +316,8 @@ button {
         border-right: none;
         border-bottom: 2px solid #222;
         padding: 10px;
-        flex: 1; /* Împarte ecranul dinamic la 50% */
-        height: auto; 
+        flex: none;
+        height: 45dvh; /* Lăsăm 45% din ecran pentru teren */
     }
     
     #fieldCanvas {
@@ -327,21 +326,32 @@ button {
     
     .sidebar {
         width: 100%; 
-        flex: 1; /* Împarte ecranul dinamic la restul de 50% */
-        height: auto; 
+        flex: none; 
+        height: 55dvh; /* Lăsăm restul de 55% pentru meniu */
+    }
+    
+    .sidebar-content {
+        /* Adăugăm spațiu gol la final ca să poți da scroll până la ultimul punct 
+           fără ca acesta să rămână ascuns sub bara de play */
+        padding-bottom: 100px; 
     }
     
     .input-row {
         flex-wrap: wrap; 
     }
 
-    /* FIX pentru bara de timeline tăiată pe iPhone */
+    /* Soluția supremă: Lipim bara forțat de fundul ecranului */
     .timeline-bar {
-        height: auto; 
-        min-height: 90px; /* Ne asigurăm că are destulă înălțime de bază */
-        padding-top: 20px; /* Spațiu sus ca să nu taie iconițele */
-        
-        /* Adăugăm 60px spațiu gol jos + zona sigură iPhone, împingând butoanele sus */
-        padding-bottom: calc(60px + env(safe-area-inset-bottom)); 
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        min-height: 90px;
+        padding-top: 15px;
+        /* Spațiu sigur pentru linia de Home de la iPhone + 30px ca să stea peste bara de Safari */
+        padding-bottom: max(35px, env(safe-area-inset-bottom)); 
+        z-index: 9999; /* Ne asigurăm că e deasupra tuturor punctelor */
+        box-shadow: 0 -5px 20px rgba(0,0,0,0.8); /* Umbră mai pronunțată ca să se distingă */
     }
 }
