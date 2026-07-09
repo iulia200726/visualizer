@@ -311,6 +311,11 @@ button {
    RESPONSIVITATE PENTRU ECRANE MICI (MOBILE)
    ========================================= */
 @media (max-width: 800px) {
+    /* dvh repară problema cu bara de adrese din Safari */
+    body, .app-wrapper {
+        height: 100dvh; 
+    }
+
     .main-content {
         flex-direction: column; 
     }
@@ -319,9 +324,9 @@ button {
         border-right: none;
         border-bottom: 2px solid #222;
         padding: 10px;
-        /* Ocupă fix 45% din înălțimea ecranului */
-        flex: 0 0 45%; 
-        height: auto; 
+        /* Forțăm terenul să ia exact 45% din ecran */
+        flex: none;
+        height: 45%; 
     }
     
     #fieldCanvas {
@@ -330,16 +335,9 @@ button {
     
     .sidebar {
         width: 100%; 
-        /* Ocupă restul spațiului automat */
-        flex: 1; 
-        height: auto;
-        /* FOARTE IMPORTANT: Fără asta flexbox blochează scroll-ul pe Safari */
-        min-height: 0; 
-    }
-    
-    .sidebar-content {
-        /* Permite scroll doar în interiorul listei de puncte */
-        -webkit-overflow-scrolling: touch;
+        /* Forțăm meniul să ia exact restul de 55% din ecran */
+        flex: none;
+        height: 55%; 
     }
     
     .input-row {
@@ -347,9 +345,10 @@ button {
     }
 
     .timeline-bar {
-        /* Adaugă spațiul necesar pentru bara de Home din iPhone, dacă există */
-        padding-bottom: max(15px, env(safe-area-inset-bottom));
+        /* Permitem barei să se înalțe pentru a face loc "liniei" de Home de pe iPhone */
         height: auto;
-        min-height: 70px;
+        min-height: 60px;
+        padding-top: 10px;
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
     }
 }
