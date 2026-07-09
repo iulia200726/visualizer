@@ -339,6 +339,7 @@ button {
     .timeline-bar {
         height: auto; /* Lăsăm conținutul să dicteze înălțimea */
         padding-top: 15px; /* Împiedică tăierea butoanelor în partea de sus */
-        padding-bottom: calc(15px + env(safe-area-inset-bottom)); /* Spațiu jos + zona sigură iPhone */
+        padding-bottom: calc(50px + env(safe-area-inset-bottom)); /* Spațiu jos + zona sigură iPhone */
+
     }
 }
