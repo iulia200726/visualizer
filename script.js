@@ -171,9 +171,12 @@ timelineSlider.addEventListener('input', (e) => {
 
 // === INTERACȚIUNE MOUSE & TOUCH PENTRU PUNCTE ===
 function getHitWaypoint(canvasX, canvasY) {
+    // Am mărit raza de detectare de la 15 la 40 pentru ecranele touch
+    const HIT_RADIUS = 40; 
+
     for (let i = waypoints.length - 1; i >= 0; i--) {
         let dist = Math.sqrt((toCanvasX(waypoints[i].x) - canvasX) ** 2 + (toCanvasY(waypoints[i].y) - canvasY) ** 2);
-        if (dist <= 15) return i;
+        if (dist <= HIT_RADIUS) return i;
     }
     return -1;
 }
