@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path Visualizer</title>  
+    <link rel="icon" type="image/x-icon" href="rbdd.svg">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-wrapper">
+        <div class="main-content">
+            <!-- Partea stângă: Teren -->
+            <div class="field-container">
+                <canvas id="fieldCanvas" width="700" height="700"></canvas>
+            </div>
+
+            <!-- Partea dreaptă: Controale -->
+            <div class="sidebar">
+                <div class="sidebar-content">
+                    <header>
+                        <h2>Path Visualizer</h2>
+                        <button id="exportCodeBtn" class="icon-btn" title="Export Code">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </button>
+                    </header>
+
+                    <section class="control-group">
+                        <h3>Robot Dimensions</h3>
+                        <div class="input-row">
+                            <label>Width (cm): <input type="number" id="robotW" value="40" step="1"></label>
+                            <label>Length (cm): <input type="number" id="robotH" value="45" step="1"></label>
+                        </div>
+                    </section>
+
+                    <section class="control-group" style="border-bottom: none;">
+                        <div class="section-header">
+                            <h3>Waypoints (Path)</h3>
+                            <button id="addWaypointBtn" class="btn-primary">+ Add Point</button>
+                        </div>
+                        <div id="waypointsContainer"></div>
+                    </section>
+                </div>
+
+                <div class="timeline-bar">
+                    <button id="playBtn" class="control-btn play-btn" title="Play">▶</button>
+                    <button id="stopBtn" class="control-btn stop-btn" title="Stop">⏹</button>
+                    <input type="range" id="timelineSlider" min="0" max="1000" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="codeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Java code:</span>
+                <button id="closeModalBtn" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <pre><code id="generatedCode"></code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Teren */
+.field-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e1e;
+    border-right: 2px solid #222;
+    padding: 20px;
+}
+
+#fieldCanvas {
+    background-image: url('field.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    aspect-ratio: 1 / 1;
+    max-height: 80vh;
+    max-width: 100%;
+    cursor: crosshair;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 52vw;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* Playback Bar */
+.timeline-bar {
+    height: 60px;
+    background-color: #111;
+    border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
+}
+
+header {
+    padding: 20px;
+    background-color: #222;
+    border-bottom: 1px solid #333;
+}
+
+.control-group {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+}
+
+.control-group h3 {
+    font-size: 14px;
+    color: #aaa;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    gap: 5px;
+    flex: 1;
+}
+
+input[type="number"] {
+    width: 77%;
+    background-color: #2d2d2d;
+    border: 1px solid #444;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 4px;
+    outline: none;
+}
+
+input[type="number"]:focus { border-color: #2ecc71; }
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-primary { background-color: #379aa0; color: #111; padding: 6px 12px; }
+.btn-primary:hover { background-color: #73b7ba; }
+.btn-danger { background-color: #e74c3c; color: white; padding: 4px 8px; font-size: 12px; }
+
+/* Waypoint Cards */
+.waypoint-card {
+    background-color: #252525;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.waypoint-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #379aa0;
+    font-weight: bold;
+}
+
+
+.control-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.play-btn { color: #2ecc71; }
+.play-btn:hover { color: #27ae60; }
+.stop-btn { color: #4285f4; font-size: 26px; }
+.stop-btn:hover { color: #357ae8; }
+
+#timelineSlider {
+    flex: 1;
+    -webkit-appearance: none;
+    background: #333;
+    height: 12px;
+    border-radius: 6px;
+    outline: none;
+}
+
+#timelineSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2ecc71;
+    cursor: pointer;
+}
+
+.sidebar header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon-btn {
+    background: transparent;
+    color: #aaa;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.icon-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+.wp-name-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid transparent;
+    color: #379aa0;
+    font-weight: bold;
+    font-size: 14px;
+    width: 100px;
+    outline: none;
+    transition: border-bottom 0.2s;
+}
+
+.wp-name-input:focus, .wp-name-input:hover {
+    border-bottom: 1px solid #379aa0;
+}
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #1e1e1e;
+    width: 80%;
+    max-width: 900px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    box-shadow: 0 4px 30px rgba(0,0,0,0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aaa;
+    font-size: 14px;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.close-btn:hover { color: #fff; }
+
+.modal-body {
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    background-color: #111;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#generatedCode {
+    margin: 0; 
+    color: #d4d4d4; 
+    font-family: Consolas, 'Courier New', monospace; 
+    font-size: 14px; 
+    line-height: 1.6; 
+}
+.kw { color: #c586c0; font-weight: bold; } 
+.kw-acc { color: #569cd6; } 
+.typ { color: #4ec9b0; } 
+.mth { color: #dcdcaa; }
+.num { color: #b5cea8; } 
+.var { color: #9cdcfe; }
+
+/* =========================================
+   RESPONSIVITATE PENTRU ECRANE MICI (MOBILE)
+   ========================================= */
+@media (max-width: 800px) {
+    .main-content {
+        flex-direction: column; /* Pune sidebar-ul sub teren */
+    }
+    
+    .field-container {
+        border-right: none;
+        border-bottom: 2px solid #222;
+        padding: 10px;
+        flex: none; /* Oprește flex-ul să forțeze dimensiunea */
+        height: 50vh; /* Terenul ia fix jumătate din ecran pe telefon */
+    }
+    
+    #fieldCanvas {
+        max-height: 100%; /* Permite canvasului să umple zona limitată */
+    }
+    
+    .sidebar {
+        width: 100%; /* Sidebar-ul ia toată lățimea pe mobil */
+        height: 50vh; 
+    }
+    
+    .input-row {
+        flex-wrap: wrap; /* Input-urile se duc pe rândul următor dacă nu încap */
+    }
+}
