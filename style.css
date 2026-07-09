@@ -304,34 +304,16 @@ button {
    RESPONSIVITATE PENTRU ECRANE MICI (MOBILE)
    ========================================= */
 @media (max-width: 800px) {
-    /* Blocăm complet corpul paginii pentru a opri Safari din a ascunde bara */
-    body {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .app-wrapper {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-
     .main-content {
-        flex-direction: column; 
-        height: 100%;
-        width: 100%;
+        flex-direction: column; /* Pune sidebar-ul sub teren */
     }
     
     .field-container {
-        flex: 0 0 45%; /* Terenul ocupă exact 45% din ecranul disponibil */
         border-right: none;
         border-bottom: 2px solid #222;
         padding: 10px;
+        flex: none;
+        height: 45dvh; /* Terenul ia 45% din ecranul VIZIBIL */
     }
     
     #fieldCanvas {
@@ -339,35 +321,19 @@ button {
     }
     
     .sidebar {
-        flex: 1; /* Meniul ocupă restul ecranului */
         width: 100%; 
-        display: flex;
-        flex-direction: column;
-        overflow: hidden; /* Foarte important pt a permite scroll-ul intern */
-    }
-    
-    .sidebar-content {
-        flex: 1;
-        overflow-y: auto; 
-        -webkit-overflow-scrolling: touch; /* Activează scroll-ul natural pe iOS (iPhone) */
-        padding-bottom: 20px; 
+        flex: 1; /* Sidebar-ul ia automat restul de spațiu disponibil. FĂRĂ height: 50vh! */
+        height: auto;
     }
     
     .input-row {
         flex-wrap: wrap; 
     }
 
-    /* Bara de timeline revine la normal, dar se bazează pe flexbox */
     .timeline-bar {
-        position: relative; /* Scoatem fixed-ul */
-        flex-shrink: 0; /* Oprim micșorarea barei */
+        /* Adaugă puțin spațiu jos doar pentru liniuța de Home de la iPhone */
+        padding-bottom: env(safe-area-inset-bottom);
         height: auto;
-        min-height: 80px;
-        padding-top: 15px;
-        /* Spațiu de siguranță iOS la bază */
-        padding-bottom: max(30px, env(safe-area-inset-bottom)); 
-        width: 100%;
-        z-index: 10;
-        box-shadow: 0 -4px 15px rgba(0,0,0,0.4);
+        min-height: 70px;
     }
 }
