@@ -312,28 +312,20 @@ button {
         border-right: none;
         border-bottom: 2px solid #222;
         padding: 10px;
-        flex: none;
-        height: 45dvh; /* Terenul ia 45% din ecranul VIZIBIL */
+        flex: none; /* Oprește flex-ul să forțeze dimensiunea */
+        height: 50vh; /* Terenul ia fix jumătate din ecran pe telefon */
     }
     
     #fieldCanvas {
-        max-height: 100%; 
+        max-height: 100%; /* Permite canvasului să umple zona limitată */
     }
     
     .sidebar {
-        width: 100%; 
-        flex: 1; /* Sidebar-ul ia automat restul de spațiu disponibil. FĂRĂ height: 50vh! */
-        height: auto;
+        width: 100%; /* Sidebar-ul ia toată lățimea pe mobil */
+        height: 50vh; 
     }
     
     .input-row {
-        flex-wrap: wrap; 
-    }
-
-    .timeline-bar {
-        /* Adaugă puțin spațiu jos doar pentru liniuța de Home de la iPhone */
-        padding-bottom: env(safe-area-inset-bottom);
-        height: auto;
-        min-height: 70px;
+        flex-wrap: wrap; /* Input-urile se duc pe rândul următor dacă nu încap */
     }
 }
