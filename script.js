@@ -307,7 +307,7 @@ function generateJavaCode() {
         code += `        <span class="kw">new</span> <span class="typ">Waypoint</span>(`;
         code += `<span class="kw">new</span> <span class="typ">Pose2D</span>(<span class="num">${p.x.toFixed(4)}</span>, <span class="num">${p.y.toFixed(4)}</span>, Math.<span class="mth">toRadians</span>(<span class="num">${p.heading}</span>)), `;
         code += `<span class="num">${speed}</span>, `;
-        code += `<span class="kw">new</span> <span class="typ">AdmissibleError</span>(<span class="num">1.5</span>, <span class="num">1.5</span>, Math.<span class="mth">toRadians</span>(<span class="num">1.5</span>)), `;
+        code += `<span class="kw">new</span> <span class="typ">AdmissibleError</span>(<span class="num">1.5</span>, <span class="num">1.5</span>, Math.<span class="mth">toRadians</span>(<span class="num">4.5</span>)), `;
         code += `<span class="kw">${isStopPoint}</span>)`;
         
         code += `,\n`;
